@@ -1,2 +1,2 @@
 #!/bin/bash
-find ./ -cmin +1 | head
+ls -t | head
