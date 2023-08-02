@@ -16,7 +16,7 @@ while (( hours <= 12 )); do
   ((minutes++))
   done
 
-  minutes=0
+  minutes=1
   # Increment the counter
   ((hours++))
 done
