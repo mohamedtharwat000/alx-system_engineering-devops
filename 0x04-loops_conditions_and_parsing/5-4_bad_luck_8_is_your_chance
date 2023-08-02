@@ -10,8 +10,9 @@ while (( count <= 10 )); do
     echo "bad luck"
   elif (( count == 8 )); then
     echo "good luck"
+  else
+    echo "Best School"
   fi
-  echo "Best School"
 
   # Increment the counter
   ((count++))
