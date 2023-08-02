@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Using the while loop to repeat the output 10 times
+
+# Initialize a counter variable
+count=1
+
+while (( count <= 10 )); do
+
+  if (( count == 4 )); then
+    echo "bad luck"
+  elif (( count == 8 )); then
+    echo "good luck"
+  fi
+  echo "Best School"
+
+  # Increment the counter
+  ((count++))
+done
