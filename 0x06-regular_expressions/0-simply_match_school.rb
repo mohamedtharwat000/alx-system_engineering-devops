@@ -6,8 +6,8 @@ argument = ARGV[0]
 # Define the regular expression pattern to match "School"
 pattern = /School/
 
-# Apply the regular expression to the argument
-match = argument.match(pattern)
+# Use the scan method to find all occurrences of the pattern and join them
+matched_string = argument.scan(pattern).join
 
-# Join the matche and print the result
-puts matche.join
+# Print the matched part or an empty string if there's no match
+puts matched_string
