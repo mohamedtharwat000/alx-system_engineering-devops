@@ -10,7 +10,7 @@ sudo sh -c 'echo "frontend lb-01
 backend webservers
     mode http
     balance roundrobin
-    server 377545-web-01 35.153.79.242:80
-    server 377545-web-02 52.201.164.137:80" > /etc/haproxy/haproxy.cfg'
+    server 374329-web-01 100.26.212.225:80
+    server 374329-web-02 100.26.233.38:80" > /etc/haproxy/haproxy.cfg'
 
 sudo service haproxy restart
