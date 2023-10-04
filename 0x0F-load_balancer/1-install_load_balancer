@@ -1,16 +1,17 @@
 #!/usr/bin/env bash
-# Install and configure HAproxy on lb-01 server.
-sudo apt-get -y update
-sudo apt-get -y install haproxy
-sudo sh -c 'echo "frontend lb-01
-    bind *:80
-    mode http
-    default_backend webservers
+# Configure server with: HAproxy version 1.5 or greater
+# Distributes request using roundrobin; sends traffic to servers: web-01 and web-02
 
-backend webservers
-    mode http
-    balance roundrobin
-    server 374329-web-01 100.26.212.225:80
-    server 374329-web-02 100.26.233.38:80" > /etc/haproxy/haproxy.cfg'
+CFG="\\\nlisten appname 0.0.0.0:80\n\tmode http\n\tbalance roundrobin\n\toption httpclose\n\toption forwardfor\n\tserver 374329-web-01 100.26.212.225 check\n\tserver 374329-web-02 100.26.233.38 check\n"
 
-sudo service haproxy restart
+sudo apt-get update
+sudo apt-get -y install nginx
+sudo apt-get install -y haproxy=1.5\*
+
+sudo sed -i "s/ENABLED=0/ENABLED=1/" /etc/default/haproxy
+
+sudo cp /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.backup
+
+sudo sed -i "\$a $CFG" /etc/haproxy/haproxy.cfg
+
+sudo service haproxy start
