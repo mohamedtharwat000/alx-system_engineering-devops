@@ -1,26 +1,23 @@
 #!/usr/bin/env bash
-# install nginx, add custom header, and redirect to youtube
-sudo apt-get -y update
+# Configure server with: Nginx, custom 404, custom 301 redirect to google
+
+ADD301_REDIRECT="\\\tlocation /redirect_me {\n\t\t return 301 https://google.com;\n\t}\n"
+ADD404_NOTFOUND="error_page 404 /custom_404.html;\n\\tlocation = /custom_404.html {\n\t\t root /usr/share/nginx/html;\n\t\tinternal;\n\t}\n"
+PATTERN="#error_page 404 /404.html;"
+ADD_HEADER="\\\tadd_header X-Served-By $HOSTNAME;"
+
+sudo apt-get update
 sudo apt-get -y install nginx
-sudo ufw allow 'Nginx HTTP'
-sudo sh -c 'echo "Hello World!" > /var/www/html/index.html'
-sudo sh -c 'printf "Ceci n'\''est pas une page\n" > /var/www/html/404.html'
-sudo sh -c 'echo "server {
-    listen 80 default_server;
-    listen [::]:80 default_server ipv6only=on;
-
-    root /var/www/html;
-    index index.html index.htm;
-	add_header X-Served-By $(hostname);
-    server_name localhost;
-    error_page 404 /404.html;
-    location / {
-        try_files \$uri \$uri/ =404;
-    }
-
-    location /redirect_me {
-        return 301 https://www.google.com/;
-    }
-}" > /etc/nginx/sites-available/default'
 sudo service nginx start
-sudo nginx -s reload
+
+echo "hello world!" | sudo tee /usr/share/nginx/html/index.html
+
+sudo sed -i "30i $ADD301_REDIRECT" /etc/nginx/sites-available/default
+
+echo "404" | sudo tee /usr/share/nginx/html/custom_404.html
+
+sudo sed -i "s@$PATTERN@$ADD404_NOTFOUND@" /etc/nginx/sites-available/default
+
+sudo sed -i "27i $ADD_HEADER" /etc/nginx/sites-available/default
+
+sudo service nginx restart
