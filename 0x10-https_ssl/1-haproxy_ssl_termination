@@ -1,0 +1,12 @@
+frontend haproxy-config
+        bind *:80
+        bind *:443 ssl crt /etc/letsencrypt/live/www.mohamedtharwat.tech/fullchain.pem
+        mode http
+        default_backend backend-config
+
+backend backend-config
+        balance roundrobin
+        mode http
+        server 374329-web-01 100.26.212.225:80 check
+        server 374329-web-02 100.26.233.38:80 check
+
