@@ -1,0 +1,41 @@
+# 0x11-what_happens_when_your_type_google_com_in_your_browser_and_press_enter
+
+## The Journey to Google.com
+
+In our increasingly connected world, the process of what transpires when you input a URL into your browser is nothing short of technological marvel. The journey involves a multitude of sophisticated components, each playing a pivotal role in delivering the webpage to your screen. To gain a profound understanding, we’ll meticulously dissect the process behind accessing a website, particularly Google, step by step.
+
+### 1. DNS Request:
+
+Our journey begins with a crucial yet often overlooked element, the Domain Name System (DNS). When you enter “https://www.google.com" in your browser, your computer initiates a DNS request. The DNS servers are responsible for translating the human-readable domain name, “google.com,” into an IP address. This is the fundamental step that sets the stage for all further interactions.
+
+### 2. TCP/IP:
+
+With the IP address in hand, your browser sets up a Transmission Control Protocol/Internet Protocol (TCP/IP) connection with Google’s servers. This is where the art of communication begins. TCP ensures the reliability of data transmission, while IP handles routing and addressing, ensuring your request reaches the right destination.
+
+### 3. Firewall:
+
+Data packets, as they begin their journey, pass through an array of firewalls. Firewalls act as vigilant gatekeepers, assessing incoming and outgoing traffic against your network’s security policies. They are the fortresses safeguarding your network’s integrity.
+
+### 4. HTTPS/SSL:
+
+In an age where data security is paramount, Google, like many websites, uses HTTPS (Hypertext Transfer Protocol Secure). HTTPS employs SSL (Secure Sockets Layer) or its modern counterpart, TLS (Transport Layer Security). These cryptographic protocols are the guardians of your privacy and data integrity. They encrypt the data flowing between your browser and Google’s servers.
+
+### 5. Load-Balancer:
+
+The scale of Google’s operation is awe-inspiring. To manage the sheer volume of requests received every second, load balancers come into play. These intelligent components distribute incoming traffic evenly across a network of servers. They ensure optimal performance and availability.
+
+### 6. Web Server:
+
+Your request, having been processed through the load balancer, now arrives at a web server. Web servers are the workhorses of the internet. They handle HTTP requests, process them, and return the requested web pages, which might contain HTML, CSS, JavaScript, and other assets. For Google, the web servers serve the Google homepage, but for other sites, the content can vary widely.
+
+### 7. Application Server:
+
+In more complex web applications, there is a need for an application server. This server handles the processing of dynamic content and interacts with databases, APIs, and other services. While Google’s homepage might not require this complexity, more intricate web applications rely heavily on application servers.
+
+### 8. Database:
+
+Databases play a pivotal role in the majority of web services. They store and retrieve data, which is crucial for various functions, from search results to user data. The application server communicates with these databases to provide dynamic, real-time content.
+
+### Conclusion:
+
+The intricacies involved in a web request to “https://www.google.com" are astounding. From DNS resolution to secure data transmission, load balancing, serving web pages, handling dynamic content, and accessing databases, every step is a testament to human ingenuity.
