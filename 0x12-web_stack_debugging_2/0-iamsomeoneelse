@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# run the whoami command under the user passed as an argument
+
+# Capture the username from the argument
+username="$1"
+
+# Check if the user exists
+if id "$username" &>/dev/null; then
+    # Run the 'whoami' command as the specified user
+    su - "$username" -c 'whoami'
+else
+    echo "User '$username' does not exist."
+fi
