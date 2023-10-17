@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # run nginx as nginx
+pkill -f apache2
 sudo service nginx stop
 sudo chmod 744 /etc/nginx/nginx.conf
 sudo sed -i 's/user .*;$/user nginx;/' /etc/nginx/nginx.conf
