@@ -2,8 +2,8 @@
 
 """Script that, using REST API, for a given employee ID."""
 
-import sys
 import requests
+import sys
 
 ID = sys.argv[1]
 
