@@ -6,6 +6,7 @@ import json
 import requests
 from sys import argv
 
+
 def display_tasks():
     """Export data in the specified format."""
 
@@ -30,6 +31,7 @@ def display_tasks():
 
     with open(f"{user_id}.json", mode='w') as json_file:
         json.dump(output_data, json_file)
+
 
 if __name__ == "__main__":
     display_tasks()
