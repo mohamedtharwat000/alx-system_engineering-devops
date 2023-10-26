@@ -1,11 +1,11 @@
 #!/usr/bin/python3
 
-"""Script that, using REST API, for a given employee ID."""
+"""Script that returns information about TODO list progress."""
 
 import requests
-import sys
+from sys import argv
 
-ID = sys.argv[1]
+ID = argv[1]
 
 user_response = requests.get(
     f'https://jsonplaceholder.typicode.com/users/{ID}', timeout=10)
