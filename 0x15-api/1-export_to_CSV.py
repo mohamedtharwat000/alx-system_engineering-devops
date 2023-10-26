@@ -26,7 +26,6 @@ def display_tasks():
             "USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"
         ]
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
-        writer.writeheader()
 
         for task in tasks_data:
             writer.writerow({
