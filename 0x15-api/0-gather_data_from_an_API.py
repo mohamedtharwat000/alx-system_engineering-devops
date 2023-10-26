@@ -1,35 +1,36 @@
 #!/usr/bin/python3
 
-"""Script that returns information about TODO list progress."""
+"""A Python script that, using this REST API, for a given employee ID."""
 
 import requests
 from sys import argv
 
+
 def display_tasks():
     """fetches data for a given employee ID."""
-    ID = argv[1]
 
-    user_response = requests.get(
-        f'https://jsonplaceholder.typicode.com/users/{ID}', timeout=10)
-    user_data = user_response.json()
+    link = "https://jsonplaceholder.typicode.com/users/"
 
-    todos_response = requests.get(
-        f'https://jsonplaceholder.typicode.com/todos?userId={ID}', timeout=10)
-    todos_data = todos_response.json()
+    response = requests.get(link + argv[1])
 
-    # Calculate progress
-    total_tasks = len(todos_data)
-    completed_tasks = len([task for task in todos_data if task.get('completed')])
+    data = response.json()
 
+    name = data.get("name")
+    print("Employee {} is done with tasks".format(name), end="")
 
-    # Display the progress
-    print(
-        f"Employee {user_data.get('name')} \
-is done with tasks ({completed_tasks}/{total_tasks}):")
+    response = requests.get(link + argv[1] + "/todos")
 
-    for task in todos_data:
-        if task['completed']:
-            print(f"\t{task.get('title')}")
+    data = response.json()
+
+    tasks = []
+    for task in data:
+        if task.get("completed") is True:
+            tasks.append(task.get("title"))
+    print("({}/{}):".format(len(tasks), len(data)))
+
+    for task in tasks:
+        print("\t {}".format(task))
+
 
 if __name__ == "__main__":
     display_tasks()
