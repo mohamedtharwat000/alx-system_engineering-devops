@@ -1,0 +1,47 @@
+Postmortem Report: Web Server Outage Incident
+
+
+
+Issue Summary:
+
+Duration of Outage: The outage occurred from 10:15 AM to 11:45 AM EST, lasting for 1 hour and 30 minutes.
+Impact: The web server was down, resulting in a complete unavailability of the website for all users. 100% of users experienced service unavailability, leading to an inability to access the site or its functionalities.
+
+
+Root Cause:
+At 10:15 AM EST, an unexpected software update was deployed to the web server without undergoing proper testing in the staging environment. This update introduced a bug in the server's critical module, causing the web server program to crash and become unresponsive to incoming requests.
+
+
+Timeline:
+
+10:15 AM: Issue detected as sudden website unavailability.
+Detection: Triggered monitoring alerts indicating the web server's unresponsiveness.
+Actions Taken: The team investigated the server logs and system configurations, assuming potential server overload or network issues. This led to an initial focus on system resource utilization and network connectivity, consuming valuable time.
+Misleading Paths: Initially, the investigation focused on potential DDoS attacks or hardware failures, leading to unnecessary exploration of unrelated areas.
+Escalation: Incident was escalated to the DevOps and Web Development teams to assess the software update and server functionality.
+Resolution: At 11:45 AM, the root cause was identified as the faulty software update. The web server was restored by rolling back the recent software deployment.
+
+
+Root Cause and Resolution:
+The issue stemmed from an untested software update that introduced a bug affecting the web server program's stability. The problem was resolved by reverting the server to the previous stable version, eliminating the introduced bug.
+
+
+Corrective and Preventative Measures:
+
+Improve the deployment process by enforcing rigorous testing in staging environments before deploying updates to the production server.
+Implement a robust rollback mechanism to swiftly revert to a stable version in case of unforeseen issues during updates.
+Develop a comprehensive monitoring system to promptly identify and alert about server program failures.
+Conduct regular audits to review and verify code changes before deployment to prevent similar incidents.
+
+
+Tasks to Address the Issue:
+
+Implement automated testing for all code updates before deployment.
+Set up a version control system to track and manage software updates effectively.
+Enhance monitoring systems to trigger alerts for server program failures.
+Establish a streamlined communication channel for immediate response and coordinated action during incidents.
+Create documentation and training for staff on incident response protocols.
+
+
+
+In conclusion, the web server outage stemmed from an untested software update that disrupted the server's functionality. Immediate resolution was achieved by reverting to a stable version. To prevent similar incidents, a series of corrective measures are proposed, focusing on testing, monitoring, and incident response protocols.
