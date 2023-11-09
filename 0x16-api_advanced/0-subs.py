@@ -8,9 +8,10 @@ import requests
 def number_of_subscribers(subreddit):
     """queries the Reddit API and returns the number of subscribers"""
 
-    url = f"https://www.reddit.com/r/{subreddit}/about.json"
+    url = f"https://www.reddit.com/r/{subreddit}/about"
 
-    response = requests.get(url, allow_redirects=False)
+    response = requests.get(url, allow_redirects=False, timeout=10)
     if response.status_code == 200:
-        return response.json().get("data").get("subscribers")
+        subscribers = response.json().get('data').get('subscribers')
+        return subscribers if subscribers else 0
     return 0
