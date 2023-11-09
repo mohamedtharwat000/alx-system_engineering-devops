@@ -10,6 +10,9 @@ def number_of_subscribers(subreddit):
 
     url = f"https://www.reddit.com/r/{subreddit}/about"
 
+    if not subreddit:
+        return 0
+
     response = requests.get(url, allow_redirects=False, timeout=10)
 
     if response.status_code == 200:
